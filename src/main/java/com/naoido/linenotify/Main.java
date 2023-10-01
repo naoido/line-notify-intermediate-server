@@ -1,6 +1,6 @@
 package com.naoido.linenotify;
 
-import com.naoido.linenotify.api.ApiServer;
+import com.naoido.linenotify.server.ApiServer;
 
 public class Main {
     public static final LineNotifySender notifySender = new LineNotifySender();

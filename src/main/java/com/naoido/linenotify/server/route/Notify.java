@@ -1,4 +1,4 @@
-package com.naoido.linenotify.api.route;
+package com.naoido.linenotify.server.route;
 
 import com.naoido.linenotify.Main;
 import jakarta.servlet.http.HttpServlet;
@@ -22,6 +22,7 @@ public class Notify extends HttpServlet {
             Main.notifySender.execute(tokenKey, message);
         } catch (IOException e) {
             resp.setStatus(HttpServletResponse.SC_FORBIDDEN);
+            return;
         }
 
         resp.setStatus(HttpServletResponse.SC_OK);
