@@ -22,7 +22,7 @@ public class LineNotifySender {
         }
     }
 
-    private boolean validToken(String token) {
+    private boolean isValidToken(String token) {
         try {
             HttpURLConnection connection = (HttpURLConnection) new URL(BASE_URL + "/status").openConnection();
             connection.setRequestMethod("GET");
@@ -42,7 +42,7 @@ public class LineNotifySender {
             throw new IllegalArgumentException();
         }
         logger.info("Check if " + key + " token is valid...");
-        if (!validToken(token)) {
+        if (!isValidToken(token)) {
             throw new RuntimeException("this token is invalid.");
         }
 
