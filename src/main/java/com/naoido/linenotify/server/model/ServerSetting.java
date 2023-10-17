@@ -2,14 +2,13 @@ package com.naoido.linenotify.server.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.HashSet;
 import java.util.Set;
 
 public class ServerSetting {
     @JsonProperty("port")
     private int port;
     @JsonProperty("allow-ips")
-    private Set<String> allowIps;
+    private AllowIps allowIps;
 
     public ServerSetting() {}
 
@@ -17,7 +16,7 @@ public class ServerSetting {
         return this.port;
     }
 
-    public Set<String> getAllowIps() {
+    public AllowIps getAllowIps() {
         return this.allowIps;
     }
 
@@ -26,7 +25,7 @@ public class ServerSetting {
 
         // Default Settings
         serverSetting.port = 9800;
-        serverSetting.allowIps = new HashSet<>();
+        serverSetting.allowIps = new AllowIps(Set.of(AllowIp.of("*.*.*.*"), AllowIp.of("1.*.*.*")));
 
         return serverSetting;
     }

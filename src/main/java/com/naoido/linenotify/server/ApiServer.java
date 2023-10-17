@@ -2,7 +2,7 @@ package com.naoido.linenotify.server;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.naoido.linenotify.server.handler.IPRestrictionHandler;
+import com.naoido.linenotify.server.handler.IpRestrictionHandler;
 import com.naoido.linenotify.server.model.ServerSetting;
 import com.naoido.linenotify.server.route.Other;
 import com.naoido.linenotify.server.route.Notify;
@@ -31,7 +31,7 @@ public class ApiServer {
         servletHandler.addServletWithMapping(new ServletHolder(new Notify()), "/notify");
         servletHandler.addServletWithMapping(new ServletHolder(new Other()), "/*");
 
-        IPRestrictionHandler ipRestrictionHandler = new IPRestrictionHandler(serverSetting.getAllowIps());
+        IpRestrictionHandler ipRestrictionHandler = new IpRestrictionHandler(serverSetting.getAllowIps());
         ipRestrictionHandler.setHandler(servletHandler);
 
         server.addConnector(connector);
@@ -45,6 +45,7 @@ public class ApiServer {
         try {
             setting = mapper.readValue(new File(JSON_PATH), ServerSetting.class);
         } catch (IOException e) {
+            e.printStackTrace();
             if (!createServerSetting()) {
                 throw new RuntimeException(e);
             }
@@ -66,7 +67,7 @@ public class ApiServer {
 
             mapper.writeValue(new File(JSON_PATH), serverSetting);
         } catch (IOException e) {
-            logger.log(Level.WARNING, "JSONファイルが書き込めませんでした。", e);
+            logger.log(Level.WARNING, "JSONファイルに書き込めませんでした。", e);
             return false;
         }
         logger.info("JSONファイルを新しく生成しました。");

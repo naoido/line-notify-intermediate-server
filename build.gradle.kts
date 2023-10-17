@@ -14,3 +14,10 @@ dependencies {
     implementation("org.eclipse.jetty:jetty-servlet:+")
     implementation("com.fasterxml.jackson.core:jackson-databind:+")
 }
+
+
+val jar by tasks.getting(Jar::class) {
+    manifest {
+        attributes["Main-Class"] = "com.naoido.linenotify.Main"
+    }
+}
