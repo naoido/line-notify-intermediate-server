@@ -25,7 +25,7 @@ public class ServerSetting {
 
         // Default Settings
         serverSetting.port = 9800;
-        serverSetting.allowIps = new AllowIps(Set.of(AllowIp.of("*.*.*.*"), AllowIp.of("1.*.*.*")));
+        serverSetting.allowIps = new AllowIps(Set.of(AllowIp.of("*.*.*.*")));
 
         return serverSetting;
     }
