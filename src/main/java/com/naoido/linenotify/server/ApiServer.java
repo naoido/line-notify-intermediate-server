@@ -45,7 +45,6 @@ public class ApiServer {
         try {
             setting = mapper.readValue(new File(JSON_PATH), ServerSetting.class);
         } catch (IOException e) {
-            e.printStackTrace();
             if (!createServerSetting()) {
                 throw new RuntimeException(e);
             }

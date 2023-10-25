@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 public class AllowIp {
     @JsonIgnore
     private final String[] ip;
+    private final Pattern IP_ADRESS_PATTERN =  Pattern.compile("(([1-9]?[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]|\\*)\\.){3}([1-9]?[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]|\\*)");
 
     @JsonCreator
     public AllowIp(String ip) {
@@ -31,7 +32,7 @@ public class AllowIp {
     }
 
     private boolean isIpv4Address(String ip) {
-        return Pattern.compile("(([1-9]?[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]|\\*)\\.){3}([1-9]?[0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]|\\*)").matcher(ip).find();
+        return IP_ADRESS_PATTERN.matcher(ip).find();
     }
 
     @JsonValue
