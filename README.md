@@ -1,7 +1,7 @@
 # LINENotify Intermediate Server 💻
 LINENotifyのAPIを直接叩かないで橋サバを立てることで管理の面であったり汎用性を高めます。  
-httpsではないので通信が暗号化されません。  
-(個人的にYamahaRTX君からLINENotiftを叩く為に作った感はあります)
+SSL化はしてないので、必要に応じてApacheやNginxでの対応をしてください。
+(個人的にYamahaRTX君からLINENotiftを叩く為に作りました。)
 
 ## Usage
 `http://192.168.100.7:9800/notify?key=rtx1210&message=hello`  
